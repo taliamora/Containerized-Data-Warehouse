@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "dcsc-warehouse",
+  "private_key_id": "2e81d081200c28a5232a142d6f66b9ecadeabc35",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCheE2+gPL8NMBY\nYJIXMzd949CDCykM2Y5//02mXDFdhyq8CaBW6Y5i+qVl61RXs6o5+OPhyr4ppR3Y\nEE2y74qCalu+4vavSG7O3uvomtfGaDpOnMlr5EQ4o907EQH3VoYPuAMOu3JvacSl\nuJi/Ce8PMCLDLS4UF0UG3pXgIqzzAkxXxOoR49JVRJrBOOqxKiGOYmHf2AWEe3JP\nlHu9NKl27xznwM23yPgoAd8PGFb3Fg0zZRmHtAmtg9F3fwfZdhaMblUNDQkq2Zl7\niX5qePTv0TAz/D5+AIKwHkSrUE+BzkQCeFfxiaymSHPjRXUmInS7/OzgRGiqOX7g\n1hFlOykJAgMBAAECggEAA9u6D9lI9RnVlscH9qH0q39sFhWIL5RrQUe6dUUysMdw\nD/oy6KDAFEFk/mB3LXlPkf8OgvCzRo95fRY2pRXwO1mLQ65sspeKfkr5XB+HFGid\nLA+3CGr17lyMBsNLRru8jFebSxjTjTH7zvHwRHBaVASUcBF+TmCX96gN8MMjWtMj\nhFHdtNOYmM3jn1uUfgKJ8G376/l/58cUpAJYwP/hofCG+pgpIVn4VvPNjFrVp9Uh\nAtI5WdEBoM7NxHEduwO8SUifSUzz2JxLk4I7gdbDN6yK+kJsBQACRYbrFf9VF5sE\n0uxl5hZ1CU8cSQ/MnhRQg/q81fb+H3x8FrxpUKy4AQKBgQDNbpclQLG4uJUqSmNF\nk3kNyDdrH/TmrgbRdYJokOqa19E07HpeFRz6dmGzrAZRwFz3Ef7WjRk0YEURtNg5\n6N4D3jO3U3BuPEYY2GmbqAmc6YYMMXYtQODnPA2E8FhIWmK0lAQj43RnYZVsIWGq\nM8zkrJ/KMp0KFj46kMcmzKqgiQKBgQDJN2uOwfF1azycZfaw9AA09uVEPi797yR1\nMIzh6SlCTv0Pr5BfCnYYWk6tfIJ9GDBI0MS4rGfrkIaVYWdZMrmJMirUVoHvWxmF\nPxwfj2MS9567lRgq1c2plocA+F3bhEFQVwp2//dVp2ncPsUctA/TXPj0ynQGOVFS\n02jRkgUkgQKBgC8o9S/LI0F5tlyoCRQe38pnLTm9c1ZFmzEYneBtbD4xz0gsBYd1\np1pkNNevZR/9XhomGm+coq2gcBq5fm4E5HrU1uB+GjBkS99GRzBBqjtIbMp9zFhl\nLXxID/51wn6RqVk1JaIrhDx7bXcOTsJo89+HNYOQjPaU1qJRPDbPA1ipAoGAafbe\nlKp8DxrvK2ni9SM6LKpM6JhaxO24ZGKx/pJ8YOgaCrWpMPPgZ0i/oEsuqNQhMWeI\nAb0BaSOOTIKkG2xEGwUpWvNHsBZopSwsEk6/nRB8LksBFCXODd4wsIkbXGwUvUtp\nPmvkA96LOCpyQYBtySBwFvG7EkADHLwquhrMzIECgYA0k0sMKu9RH7ynU8q8qYCe\nfmhtyVzGkSk8zPta/TKTwQjEJg7+Yqk68bPbJENxkpUbpX/GPqqI7SIJBF9JOBy9\niroKEnAfq3k1JftfxAXEVp8rIRPG4+kGO8SKKB4D/8oYOV477481gTk7SuPmv/ut\n/MRLC4ultqM2WjxU21n/LA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "airflow@dcsc-warehouse.iam.gserviceaccount.com",
+  "client_id": "105831317912991419643",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/airflow%40dcsc-warehouse.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,55 @@
+[2023-11-20T22:16:45.048+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.step1 scheduled__2023-11-14T00:00:00+00:00 [queued]>
+[2023-11-20T22:16:45.054+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.step1 scheduled__2023-11-14T00:00:00+00:00 [queued]>
+[2023-11-20T22:16:45.054+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-20T22:16:45.061+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): step1> on 2023-11-14 00:00:00+00:00
+[2023-11-20T22:16:45.068+0000] {standard_task_runner.py:57} INFO - Started process 396 to run task
+[2023-11-20T22:16:45.084+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'step1', 'scheduled__2023-11-14T00:00:00+00:00', '--job-id', '32', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmppyiv1wgf']
+[2023-11-20T22:16:45.085+0000] {standard_task_runner.py:85} INFO - Job 32: Subtask step1
+[2023-11-20T22:16:45.163+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.step1 scheduled__2023-11-14T00:00:00+00:00 [running]> on host 323903d45442
+[2023-11-20T22:16:45.262+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='step1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-14T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-14T00:00:00+00:00'
+[2023-11-20T22:16:45.264+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-11-20T22:16:45.265+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'echo 1']
+[2023-11-20T22:16:45.278+0000] {subprocess.py:86} INFO - Output:
+[2023-11-20T22:16:45.280+0000] {subprocess.py:93} INFO - 1
+[2023-11-20T22:16:45.285+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-11-20T22:16:45.320+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=step1, execution_date=20231114T000000, start_date=20231120T221645, end_date=20231120T221645
+[2023-11-20T22:16:45.379+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-20T22:16:45.395+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-21T01:20:37.516+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.step1 scheduled__2023-11-14T00:00:00+00:00 [queued]>
+[2023-11-21T01:20:37.557+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.step1 scheduled__2023-11-14T00:00:00+00:00 [queued]>
+[2023-11-21T01:20:37.561+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-21T01:20:37.582+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): step1> on 2023-11-14 00:00:00+00:00
+[2023-11-21T01:20:37.724+0000] {standard_task_runner.py:57} INFO - Started process 159 to run task
+[2023-11-21T01:20:37.746+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'step1', 'scheduled__2023-11-14T00:00:00+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpcmsu71v1']
+[2023-11-21T01:20:37.806+0000] {standard_task_runner.py:85} INFO - Job 25: Subtask step1
+[2023-11-21T01:20:38.218+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.step1 scheduled__2023-11-14T00:00:00+00:00 [running]> on host f31a30014ab0
+[2023-11-21T01:20:48.927+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='step1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-14T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-14T00:00:00+00:00'
+[2023-11-21T01:20:49.017+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-11-21T01:20:49.035+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'curl --create-dirs -o /opt/***/data/2023-11-14/downloads/outcomes_2023-11-14.json https://data.austintexas.gov/resource/9t4d-g238.json']
+[2023-11-21T01:20:49.199+0000] {subprocess.py:86} INFO - Output:
+[2023-11-21T01:20:49.225+0000] {subprocess.py:93} INFO -   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+[2023-11-21T01:20:49.227+0000] {subprocess.py:93} INFO -                                  Dload  Upload   Total   Spent    Left  Speed
+[2023-11-21T01:20:50.503+0000] {subprocess.py:93} INFO -   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 48104    0 48104    0     0  55419      0 --:--:-- --:--:-- --:--:-- 55355100  320k    0  320k    0     0   252k      0 --:--:--  0:00:01 --:--:--  252k
+[2023-11-21T01:20:50.572+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-11-21T01:20:50.889+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=step1, execution_date=20231114T000000, start_date=20231121T012037, end_date=20231121T012050
+[2023-11-21T01:20:51.124+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-21T01:20:51.426+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-11-21T02:36:14.043+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.step1 scheduled__2023-11-14T00:00:00+00:00 [queued]>
+[2023-11-21T02:36:14.062+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.step1 scheduled__2023-11-14T00:00:00+00:00 [queued]>
+[2023-11-21T02:36:14.062+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-21T02:36:14.103+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): step1> on 2023-11-14 00:00:00+00:00
+[2023-11-21T02:36:14.127+0000] {standard_task_runner.py:57} INFO - Started process 136 to run task
+[2023-11-21T02:36:14.177+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'step1', 'scheduled__2023-11-14T00:00:00+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpx7dxgy9v']
+[2023-11-21T02:36:14.203+0000] {standard_task_runner.py:85} INFO - Job 20: Subtask step1
+[2023-11-21T02:36:14.449+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.step1 scheduled__2023-11-14T00:00:00+00:00 [running]> on host b875fa978b1e
+[2023-11-21T02:36:17.738+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='step1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-14T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-14T00:00:00+00:00'
+[2023-11-21T02:36:17.740+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-11-21T02:36:17.741+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'curl --create-dirs -o /opt/***/data/2023-11-14/downloads/outcomes_2023-11-14.json https://data.austintexas.gov/resource/9t4d-g238.json']
+[2023-11-21T02:36:17.835+0000] {subprocess.py:86} INFO - Output:
+[2023-11-21T02:36:17.861+0000] {subprocess.py:93} INFO -   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+[2023-11-21T02:36:17.862+0000] {subprocess.py:93} INFO -                                  Dload  Upload   Total   Spent    Left  Speed
+[2023-11-21T02:36:18.969+0000] {subprocess.py:93} INFO -   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  320k    0  320k    0     0   291k      0 --:--:--  0:00:01 --:--:--  291k
+[2023-11-21T02:36:19.000+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-11-21T02:36:19.189+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=step1, execution_date=20231114T000000, start_date=20231121T023614, end_date=20231121T023619
+[2023-11-21T02:36:19.424+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-21T02:36:19.569+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

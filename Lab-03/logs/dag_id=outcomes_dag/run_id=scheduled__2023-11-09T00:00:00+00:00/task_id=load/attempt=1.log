@@ -1,0 +1,106 @@
+[2023-11-21T01:20:45.333+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.load scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-21T01:20:45.384+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.load scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-21T01:20:45.393+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-21T01:20:45.486+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): load> on 2023-11-09 00:00:00+00:00
+[2023-11-21T01:20:45.590+0000] {standard_task_runner.py:57} INFO - Started process 186 to run task
+[2023-11-21T01:20:45.634+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'load', 'scheduled__2023-11-09T00:00:00+00:00', '--job-id', '32', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp9kckdpfn']
+[2023-11-21T01:20:45.695+0000] {standard_task_runner.py:85} INFO - Job 32: Subtask load
+[2023-11-21T01:20:46.107+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.load scheduled__2023-11-09T00:00:00+00:00 [running]> on host f31a30014ab0
+[2023-11-21T01:20:57.244+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-09T00:00:00+00:00'
+[2023-11-21T01:20:57.712+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 11, in load_data
+    data_to_staging(filename, engine)
+  File "/opt/airflow/dags/ETL/load.py", line 19, in data_to_staging
+    data = pd.read_parquet(filename)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 509, in read_parquet
+    return impl.read(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 220, in read
+    path_or_handle, handles, kwargs["filesystem"] = _get_path_or_handle(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 110, in _get_path_or_handle
+    handles = get_handle(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/common.py", line 868, in get_handle
+    handle = open(handle, ioargs.mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/data/2023-11-09/processed/transformed_shelter_data.parquet'
+[2023-11-21T01:20:57.849+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=outcomes_dag, task_id=load, execution_date=20231109T000000, start_date=20231121T012045, end_date=20231121T012057
+[2023-11-21T01:20:58.065+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 32 for task load ([Errno 2] No such file or directory: '/opt/airflow/data/2023-11-09/processed/transformed_shelter_data.parquet'; 186)
+[2023-11-21T01:20:58.477+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-21T01:20:58.737+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-21T02:36:18.750+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.load scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-21T02:36:18.771+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.load scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-21T02:36:18.772+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-21T02:36:18.809+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): load> on 2023-11-09 00:00:00+00:00
+[2023-11-21T02:36:18.830+0000] {standard_task_runner.py:57} INFO - Started process 179 to run task
+[2023-11-21T02:36:18.867+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'load', 'scheduled__2023-11-09T00:00:00+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpgayab4j_']
+[2023-11-21T02:36:18.899+0000] {standard_task_runner.py:85} INFO - Job 30: Subtask load
+[2023-11-21T02:36:19.158+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.load scheduled__2023-11-09T00:00:00+00:00 [running]> on host b875fa978b1e
+[2023-11-21T02:36:22.580+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-09T00:00:00+00:00'
+[2023-11-21T02:36:22.658+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 11, in load_data
+    data_to_staging(filename, engine)
+  File "/opt/airflow/dags/ETL/load.py", line 19, in data_to_staging
+    data = pd.read_parquet(filename)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 509, in read_parquet
+    return impl.read(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 220, in read
+    path_or_handle, handles, kwargs["filesystem"] = _get_path_or_handle(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 110, in _get_path_or_handle
+    handles = get_handle(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/common.py", line 868, in get_handle
+    handle = open(handle, ioargs.mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/data/2023-11-09/processed/transformed_shelter_data.parquet'
+[2023-11-21T02:36:22.710+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=outcomes_dag, task_id=load, execution_date=20231109T000000, start_date=20231121T023618, end_date=20231121T023622
+[2023-11-21T02:36:22.729+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 30 for task load ([Errno 2] No such file or directory: '/opt/airflow/data/2023-11-09/processed/transformed_shelter_data.parquet'; 179)
+[2023-11-21T02:36:22.821+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-21T02:36:22.917+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-22T07:54:05.665+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-22T07:54:05.755+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-22T07:54:05.758+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-22T07:54:05.833+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-09 00:00:00+00:00
+[2023-11-22T07:54:05.860+0000] {standard_task_runner.py:57} INFO - Started process 360 to run task
+[2023-11-22T07:54:05.887+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-09T00:00:00+00:00', '--job-id', '40', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpcnk5z364']
+[2023-11-22T07:54:05.912+0000] {standard_task_runner.py:85} INFO - Job 40: Subtask Load
+[2023-11-22T07:54:06.364+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-09T00:00:00+00:00 [running]> on host 6318e996d951
+[2023-11-22T07:54:06.720+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-09T00:00:00+00:00'
+[2023-11-22T07:54:06.752+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T07:54:08.724+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-22T07:54:08.730+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T07:54:08.811+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231109T000000, start_date=20231122T075405, end_date=20231122T075408
+[2023-11-22T07:54:09.412+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T01:49:42.585+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-23T01:49:42.623+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-23T01:49:42.623+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-23T01:49:42.657+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-09 00:00:00+00:00
+[2023-11-23T01:49:42.687+0000] {standard_task_runner.py:57} INFO - Started process 204 to run task
+[2023-11-23T01:49:42.728+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-09T00:00:00+00:00', '--job-id', '49', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmprd22wavw']
+[2023-11-23T01:49:42.765+0000] {standard_task_runner.py:85} INFO - Job 49: Subtask Load
+[2023-11-23T01:49:42.974+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-09T00:00:00+00:00 [running]> on host d15d3caa5b00
+[2023-11-23T01:49:43.183+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-09T00:00:00+00:00'
+[2023-11-23T01:49:43.206+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T01:49:44.466+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-23T01:49:44.488+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T01:49:44.548+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231109T000000, start_date=20231123T014942, end_date=20231123T014944
+[2023-11-23T01:49:44.741+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T03:40:51.298+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-23T03:40:51.334+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-23T03:40:51.334+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-23T03:40:51.389+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-09 00:00:00+00:00
+[2023-11-23T03:40:51.413+0000] {standard_task_runner.py:57} INFO - Started process 195 to run task
+[2023-11-23T03:40:51.426+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-09T00:00:00+00:00', '--job-id', '44', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpfww92zb7']
+[2023-11-23T03:40:51.466+0000] {standard_task_runner.py:85} INFO - Job 44: Subtask Load
+[2023-11-23T03:40:51.629+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-09T00:00:00+00:00 [running]> on host e647c96745b0
+[2023-11-23T03:40:51.910+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-09T00:00:00+00:00'
+[2023-11-23T03:40:51.918+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T03:40:53.031+0000] {logging_mixin.py:154} INFO - Data is in Staging Area...
+[2023-11-23T03:40:53.038+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T03:40:53.087+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231109T000000, start_date=20231123T034051, end_date=20231123T034053
+[2023-11-23T03:40:53.280+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0

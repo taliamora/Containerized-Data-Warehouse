@@ -1,0 +1,116 @@
+[2023-11-22T23:01:11.359+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-22T23:01:11.372+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-22T23:01:11.373+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 4
+[2023-11-22T23:01:11.395+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load_to_staging> on 2023-11-09 00:00:00+00:00
+[2023-11-22T23:01:11.407+0000] {standard_task_runner.py:57} INFO - Started process 319 to run task
+[2023-11-22T23:01:11.416+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load_to_staging', 'scheduled__2023-11-09T00:00:00+00:00', '--job-id', '79', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp1ty3_n3a']
+[2023-11-22T23:01:11.429+0000] {standard_task_runner.py:85} INFO - Job 79: Subtask Load_to_staging
+[2023-11-22T23:01:11.637+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [running]> on host 4b2f5af281f8
+[2023-11-22T23:01:11.762+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-09T00:00:00+00:00'
+[2023-11-22T23:01:12.190+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 31, in data_to_staging
+    load_job = client.load_table_from_uri(uri, table_ref, job_config=job_config)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 2375, in load_table_from_uri
+    load_job._begin(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 693, in _begin
+    api_response = client._call_api(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 808, in _call_api
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/retry.py", line 366, in retry_wrapped_func
+    return retry_target(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/retry.py", line 204, in retry_target
+    return target()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/dcsc-warehouse/jobs?prettyPrint=false: Not found: Dataset dcsc-warehouse:dcsc-warehouse.shelter_warehouse_schema
+[2023-11-22T23:01:12.201+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=outcomes_dag, task_id=Load_to_staging, execution_date=20231109T000000, start_date=20231122T230111, end_date=20231122T230112
+[2023-11-22T23:01:12.218+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 79 for task Load_to_staging (404 POST https://bigquery.googleapis.com/bigquery/v2/projects/dcsc-warehouse/jobs?prettyPrint=false: Not found: Dataset dcsc-warehouse:dcsc-warehouse.shelter_warehouse_schema; 319)
+[2023-11-22T23:01:12.264+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-22T23:21:31.474+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-22T23:21:31.499+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-22T23:21:31.500+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 4
+[2023-11-22T23:21:31.566+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load_to_staging> on 2023-11-09 00:00:00+00:00
+[2023-11-22T23:21:31.613+0000] {standard_task_runner.py:57} INFO - Started process 257 to run task
+[2023-11-22T23:21:31.643+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load_to_staging', 'scheduled__2023-11-09T00:00:00+00:00', '--job-id', '57', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpnlwly6zy']
+[2023-11-22T23:21:31.650+0000] {standard_task_runner.py:85} INFO - Job 57: Subtask Load_to_staging
+[2023-11-22T23:21:31.860+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [running]> on host b410bfb4af5e
+[2023-11-22T23:21:32.237+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-09T00:00:00+00:00'
+[2023-11-22T23:21:32.679+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 33, in data_to_staging
+    load_job.result()  # Wait for the job to complete
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 No schema specified on job or table.
+[2023-11-22T23:21:32.729+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=outcomes_dag, task_id=Load_to_staging, execution_date=20231109T000000, start_date=20231122T232131, end_date=20231122T232132
+[2023-11-22T23:21:33.122+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 57 for task Load_to_staging (400 No schema specified on job or table.; 257)
+[2023-11-22T23:21:33.315+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-22T23:44:15.673+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-22T23:44:15.677+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-22T23:44:15.678+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 4
+[2023-11-22T23:44:15.684+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load_to_staging> on 2023-11-09 00:00:00+00:00
+[2023-11-22T23:44:15.689+0000] {standard_task_runner.py:57} INFO - Started process 240 to run task
+[2023-11-22T23:44:15.692+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load_to_staging', 'scheduled__2023-11-09T00:00:00+00:00', '--job-id', '54', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpohjbir0s']
+[2023-11-22T23:44:15.693+0000] {standard_task_runner.py:85} INFO - Job 54: Subtask Load_to_staging
+[2023-11-22T23:44:15.732+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [running]> on host 371cae71aa63
+[2023-11-22T23:44:15.796+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-09T00:00:00+00:00'
+[2023-11-22T23:44:16.015+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 33, in data_to_staging
+    load_job.result()  # Wait for the job to complete
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 No schema specified on job or table.
+[2023-11-22T23:44:16.024+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=outcomes_dag, task_id=Load_to_staging, execution_date=20231109T000000, start_date=20231122T234415, end_date=20231122T234416
+[2023-11-22T23:44:16.031+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 54 for task Load_to_staging (400 No schema specified on job or table.; 240)
+[2023-11-22T23:44:16.068+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-23T00:40:49.031+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-23T00:40:49.067+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [queued]>
+[2023-11-23T00:40:49.072+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 4
+[2023-11-23T00:40:49.119+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load_to_staging> on 2023-11-09 00:00:00+00:00
+[2023-11-23T00:40:49.153+0000] {standard_task_runner.py:57} INFO - Started process 314 to run task
+[2023-11-23T00:40:49.198+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load_to_staging', 'scheduled__2023-11-09T00:00:00+00:00', '--job-id', '70', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp4vdlkbil']
+[2023-11-23T00:40:49.226+0000] {standard_task_runner.py:85} INFO - Job 70: Subtask Load_to_staging
+[2023-11-23T00:40:49.398+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load_to_staging scheduled__2023-11-09T00:00:00+00:00 [running]> on host 75913536581a
+[2023-11-23T00:40:49.694+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-09T00:00:00+00:00'
+[2023-11-23T00:40:50.817+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 33, in data_to_staging
+    load_job = client.load_table_from_uri(uri, table_ref, job_config=job_config)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 2375, in load_table_from_uri
+    load_job._begin(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 693, in _begin
+    api_response = client._call_api(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 808, in _call_api
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/retry.py", line 366, in retry_wrapped_func
+    return retry_target(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/retry.py", line 204, in retry_target
+    return target()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 POST https://bigquery.googleapis.com/bigquery/v2/projects/dcsc-warehouse/jobs?prettyPrint=false: Not found: Dataset dcsc-warehouse:dcsc-warehouse.shelter_warehouse_schema
+[2023-11-23T00:40:50.894+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=outcomes_dag, task_id=Load_to_staging, execution_date=20231109T000000, start_date=20231123T004049, end_date=20231123T004050
+[2023-11-23T00:40:50.925+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 70 for task Load_to_staging (404 POST https://bigquery.googleapis.com/bigquery/v2/projects/dcsc-warehouse/jobs?prettyPrint=false: Not found: Dataset dcsc-warehouse:dcsc-warehouse.shelter_warehouse_schema; 314)
+[2023-11-23T00:40:50.987+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1

@@ -1,0 +1,523 @@
+[2023-11-21T01:21:14.112+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-21T01:21:14.135+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-21T01:21:14.135+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-21T01:21:14.161+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): load> on 2023-11-18 00:00:00+00:00
+[2023-11-21T01:21:14.178+0000] {standard_task_runner.py:57} INFO - Started process 280 to run task
+[2023-11-21T01:21:14.196+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '56', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpj7xh4z50']
+[2023-11-21T01:21:14.214+0000] {standard_task_runner.py:85} INFO - Job 56: Subtask load
+[2023-11-21T01:21:14.383+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.load scheduled__2023-11-18T00:00:00+00:00 [running]> on host f31a30014ab0
+[2023-11-21T01:21:18.846+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-21T01:21:18.984+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 11, in load_data
+    data_to_staging(filename, engine)
+  File "/opt/airflow/dags/ETL/load.py", line 19, in data_to_staging
+    data = pd.read_parquet(filename)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 509, in read_parquet
+    return impl.read(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 220, in read
+    path_or_handle, handles, kwargs["filesystem"] = _get_path_or_handle(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 110, in _get_path_or_handle
+    handles = get_handle(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/common.py", line 868, in get_handle
+    handle = open(handle, ioargs.mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/data/2023-11-18/processed/transformed_shelter_data.parquet'
+[2023-11-21T01:21:19.025+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=outcomes_dag, task_id=load, execution_date=20231118T000000, start_date=20231121T012114, end_date=20231121T012119
+[2023-11-21T01:21:19.099+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 56 for task load ([Errno 2] No such file or directory: '/opt/airflow/data/2023-11-18/processed/transformed_shelter_data.parquet'; 280)
+[2023-11-21T01:21:19.415+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-21T01:21:19.495+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-21T02:36:32.932+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-21T02:36:32.951+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-21T02:36:32.952+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-21T02:36:32.975+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): load> on 2023-11-18 00:00:00+00:00
+[2023-11-21T02:36:32.989+0000] {standard_task_runner.py:57} INFO - Started process 298 to run task
+[2023-11-21T02:36:33.028+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '56', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpbpnvnglx']
+[2023-11-21T02:36:33.049+0000] {standard_task_runner.py:85} INFO - Job 56: Subtask load
+[2023-11-21T02:36:33.218+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.load scheduled__2023-11-18T00:00:00+00:00 [running]> on host b875fa978b1e
+[2023-11-21T02:36:34.028+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-21T02:36:34.083+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 11, in load_data
+    data_to_staging(filename, engine)
+  File "/opt/airflow/dags/ETL/load.py", line 19, in data_to_staging
+    data = pd.read_parquet(filename)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 509, in read_parquet
+    return impl.read(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 220, in read
+    path_or_handle, handles, kwargs["filesystem"] = _get_path_or_handle(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parquet.py", line 110, in _get_path_or_handle
+    handles = get_handle(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/common.py", line 868, in get_handle
+    handle = open(handle, ioargs.mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/data/2023-11-18/processed/transformed_shelter_data.parquet'
+[2023-11-21T02:36:34.104+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=outcomes_dag, task_id=load, execution_date=20231118T000000, start_date=20231121T023632, end_date=20231121T023634
+[2023-11-21T02:36:34.125+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 56 for task load ([Errno 2] No such file or directory: '/opt/airflow/data/2023-11-18/processed/transformed_shelter_data.parquet'; 298)
+[2023-11-21T02:36:34.187+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-21T02:36:34.257+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-21T03:16:16.375+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-21T03:16:16.380+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-21T03:16:16.380+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-21T03:16:16.388+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): load> on 2023-11-18 00:00:00+00:00
+[2023-11-21T03:16:16.393+0000] {standard_task_runner.py:57} INFO - Started process 181 to run task
+[2023-11-21T03:16:16.396+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpe1qyoy5l']
+[2023-11-21T03:16:16.399+0000] {standard_task_runner.py:85} INFO - Job 23: Subtask load
+[2023-11-21T03:16:16.431+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.load scheduled__2023-11-18T00:00:00+00:00 [running]> on host 33d8c5494200
+[2023-11-21T03:16:16.661+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-21T03:16:16.816+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-21T03:16:16.816+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 13, in load_data
+    execute_sql_script(engine)
+  File "/opt/airflow/dags/ETL/load.py", line 38, in execute_sql_script
+    with open(script_path, 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'data_insertion.sql'
+[2023-11-21T03:16:16.823+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=outcomes_dag, task_id=load, execution_date=20231118T000000, start_date=20231121T031616, end_date=20231121T031616
+[2023-11-21T03:16:16.829+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 23 for task load ([Errno 2] No such file or directory: 'data_insertion.sql'; 181)
+[2023-11-21T03:16:16.859+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-21T03:16:16.872+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-22T03:22:57.166+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T03:22:57.172+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T03:22:57.173+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T03:22:57.179+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-22T03:22:57.189+0000] {standard_task_runner.py:57} INFO - Started process 125 to run task
+[2023-11-22T03:22:57.196+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpq94f0arh']
+[2023-11-22T03:22:57.200+0000] {standard_task_runner.py:85} INFO - Job 25: Subtask Load
+[2023-11-22T03:22:57.237+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host cf56a4e96859
+[2023-11-22T03:22:57.299+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-22T03:22:57.301+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T03:22:58.107+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-22T03:22:59.121+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.DeadlockDetected: deadlock detected
+DETAIL:  Process 134 waits for ShareLock on transaction 762; blocked by process 136.
+Process 136 waits for ShareLock on transaction 761; blocked by process 134.
+HINT:  See server log for query details.
+CONTEXT:  while inserting index tuple (7,45) in relation "animal_dim_pkey"
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 14, in load_data
+    execute_sql_script(engine)
+  File "/opt/airflow/dags/ETL/load.py", line 44, in execute_sql_script
+    connection.execute(text(sql_script))
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.errors.DeadlockDetected) deadlock detected
+DETAIL:  Process 134 waits for ShareLock on transaction 762; blocked by process 136.
+Process 136 waits for ShareLock on transaction 761; blocked by process 134.
+HINT:  See server log for query details.
+CONTEXT:  while inserting index tuple (7,45) in relation "animal_dim_pkey"
+
+[SQL: --- INSERT DATA INTO DIMENSION TABLES
+
+--- Animal Dimension
+INSERT INTO animal_dim ("Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB")
+SELECT DISTINCT "Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB"
+FROM outcomes_staging
+WHERE "Animal ID" IS NOT NULL;
+
+--- Outcomes Dimension
+INSERT INTO outcome_type_dim ("Outcome Type")
+SELECT DISTINCT "Outcome"
+FROM outcomes_staging
+WHERE "Outcome" IS NOT NULL;
+
+--- Reproductive Status Dimension
+INSERT INTO reproductive_status_dim ("Reproductive Status")
+SELECT DISTINCT "Reproductive Status"
+FROM outcomes_staging
+WHERE "Reproductive Status" IS NOT NULL;
+
+--- Date Dimension
+INSERT INTO date_dim ("Date ID", "Day", "Month", "Year")
+SELECT DISTINCT "Date ID", "Day", "Month", "Year"
+FROM outcomes_staging
+WHERE "Date ID" IS NOT NULL;
+
+
+
+
+--- INSERT DATA INTO FACT TABLE
+INSERT INTO outcomes_fct ("Date", "Animal", "Outcome", "Repo Status")
+SELECT 
+    dd."Date ID",
+    ad."Animal ID",
+    otd."Outcome ID",
+    rsd."Status ID"
+FROM outcomes_staging os
+JOIN date_dim dd ON os."Date ID" = dd."Date ID"
+JOIN animal_dim ad ON os."Animal ID" = ad."Animal ID"
+JOIN outcome_type_dim otd ON os."Outcome" = otd."Outcome Type"
+JOIN reproductive_status_dim rsd ON os."Reproductive Status" = rsd."Reproductive Status";
+
+]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2023-11-22T03:22:59.155+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231122T032257, end_date=20231122T032259
+[2023-11-22T03:22:59.168+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 25 for task Load ((psycopg2.errors.DeadlockDetected) deadlock detected
+DETAIL:  Process 134 waits for ShareLock on transaction 762; blocked by process 136.
+Process 136 waits for ShareLock on transaction 761; blocked by process 134.
+HINT:  See server log for query details.
+CONTEXT:  while inserting index tuple (7,45) in relation "animal_dim_pkey"
+
+[SQL: --- INSERT DATA INTO DIMENSION TABLES
+
+--- Animal Dimension
+INSERT INTO animal_dim ("Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB")
+SELECT DISTINCT "Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB"
+FROM outcomes_staging
+WHERE "Animal ID" IS NOT NULL;
+
+--- Outcomes Dimension
+INSERT INTO outcome_type_dim ("Outcome Type")
+SELECT DISTINCT "Outcome"
+FROM outcomes_staging
+WHERE "Outcome" IS NOT NULL;
+
+--- Reproductive Status Dimension
+INSERT INTO reproductive_status_dim ("Reproductive Status")
+SELECT DISTINCT "Reproductive Status"
+FROM outcomes_staging
+WHERE "Reproductive Status" IS NOT NULL;
+
+--- Date Dimension
+INSERT INTO date_dim ("Date ID", "Day", "Month", "Year")
+SELECT DISTINCT "Date ID", "Day", "Month", "Year"
+FROM outcomes_staging
+WHERE "Date ID" IS NOT NULL;
+
+
+
+
+--- INSERT DATA INTO FACT TABLE
+INSERT INTO outcomes_fct ("Date", "Animal", "Outcome", "Repo Status")
+SELECT 
+    dd."Date ID",
+    ad."Animal ID",
+    otd."Outcome ID",
+    rsd."Status ID"
+FROM outcomes_staging os
+JOIN date_dim dd ON os."Date ID" = dd."Date ID"
+JOIN animal_dim ad ON os."Animal ID" = ad."Animal ID"
+JOIN outcome_type_dim otd ON os."Outcome" = otd."Outcome Type"
+JOIN reproductive_status_dim rsd ON os."Reproductive Status" = rsd."Reproductive Status";
+
+]
+(Background on this error at: https://sqlalche.me/e/14/e3q8); 125)
+[2023-11-22T03:22:59.225+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-22T03:22:59.251+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-22T03:55:57.092+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T03:55:57.103+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T03:55:57.103+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T03:55:57.112+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-22T03:55:57.123+0000] {standard_task_runner.py:57} INFO - Started process 124 to run task
+[2023-11-22T03:55:57.144+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpzjyamv3b']
+[2023-11-22T03:55:57.171+0000] {standard_task_runner.py:85} INFO - Job 23: Subtask Load
+[2023-11-22T03:55:57.282+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host cf936e748923
+[2023-11-22T03:55:57.462+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-22T03:55:57.465+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T03:55:58.644+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-22T03:55:59.657+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.DeadlockDetected: deadlock detected
+DETAIL:  Process 119 waits for ShareLock on transaction 760; blocked by process 117.
+Process 117 waits for ShareLock on transaction 762; blocked by process 119.
+HINT:  See server log for query details.
+CONTEXT:  while inserting index tuple (8,33) in relation "animal_dim_pkey"
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 14, in load_data
+    execute_sql_script(engine)
+  File "/opt/airflow/dags/ETL/load.py", line 44, in execute_sql_script
+    connection.execute(text(sql_script))
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.errors.DeadlockDetected) deadlock detected
+DETAIL:  Process 119 waits for ShareLock on transaction 760; blocked by process 117.
+Process 117 waits for ShareLock on transaction 762; blocked by process 119.
+HINT:  See server log for query details.
+CONTEXT:  while inserting index tuple (8,33) in relation "animal_dim_pkey"
+
+[SQL: --- INSERT DATA INTO DIMENSION TABLES
+
+--- Animal Dimension
+INSERT INTO animal_dim ("Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB")
+SELECT DISTINCT "Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB"
+FROM outcomes_staging
+WHERE "Animal ID" IS NOT NULL;
+
+--- Outcomes Dimension
+INSERT INTO outcome_type_dim ("Outcome Type")
+SELECT DISTINCT "Outcome"
+FROM outcomes_staging
+WHERE "Outcome" IS NOT NULL;
+
+--- Reproductive Status Dimension
+INSERT INTO reproductive_status_dim ("Reproductive Status")
+SELECT DISTINCT "Reproductive Status"
+FROM outcomes_staging
+WHERE "Reproductive Status" IS NOT NULL;
+
+--- Date Dimension
+INSERT INTO date_dim ("Date ID", "Day", "Month", "Year")
+SELECT DISTINCT "Date ID", "Day", "Month", "Year"
+FROM outcomes_staging
+WHERE "Date ID" IS NOT NULL;
+
+
+
+
+--- INSERT DATA INTO FACT TABLE
+INSERT INTO outcomes_fct ("Date", "Animal", "Outcome", "Repo Status")
+SELECT 
+    dd."Date ID",
+    ad."Animal ID",
+    otd."Outcome ID",
+    rsd."Status ID"
+FROM outcomes_staging os
+JOIN date_dim dd ON os."Date ID" = dd."Date ID"
+JOIN animal_dim ad ON os."Animal ID" = ad."Animal ID"
+JOIN outcome_type_dim otd ON os."Outcome" = otd."Outcome Type"
+JOIN reproductive_status_dim rsd ON os."Reproductive Status" = rsd."Reproductive Status";
+
+]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2023-11-22T03:55:59.705+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231122T035557, end_date=20231122T035559
+[2023-11-22T03:55:59.724+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 23 for task Load ((psycopg2.errors.DeadlockDetected) deadlock detected
+DETAIL:  Process 119 waits for ShareLock on transaction 760; blocked by process 117.
+Process 117 waits for ShareLock on transaction 762; blocked by process 119.
+HINT:  See server log for query details.
+CONTEXT:  while inserting index tuple (8,33) in relation "animal_dim_pkey"
+
+[SQL: --- INSERT DATA INTO DIMENSION TABLES
+
+--- Animal Dimension
+INSERT INTO animal_dim ("Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB")
+SELECT DISTINCT "Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB"
+FROM outcomes_staging
+WHERE "Animal ID" IS NOT NULL;
+
+--- Outcomes Dimension
+INSERT INTO outcome_type_dim ("Outcome Type")
+SELECT DISTINCT "Outcome"
+FROM outcomes_staging
+WHERE "Outcome" IS NOT NULL;
+
+--- Reproductive Status Dimension
+INSERT INTO reproductive_status_dim ("Reproductive Status")
+SELECT DISTINCT "Reproductive Status"
+FROM outcomes_staging
+WHERE "Reproductive Status" IS NOT NULL;
+
+--- Date Dimension
+INSERT INTO date_dim ("Date ID", "Day", "Month", "Year")
+SELECT DISTINCT "Date ID", "Day", "Month", "Year"
+FROM outcomes_staging
+WHERE "Date ID" IS NOT NULL;
+
+
+
+
+--- INSERT DATA INTO FACT TABLE
+INSERT INTO outcomes_fct ("Date", "Animal", "Outcome", "Repo Status")
+SELECT 
+    dd."Date ID",
+    ad."Animal ID",
+    otd."Outcome ID",
+    rsd."Status ID"
+FROM outcomes_staging os
+JOIN date_dim dd ON os."Date ID" = dd."Date ID"
+JOIN animal_dim ad ON os."Animal ID" = ad."Animal ID"
+JOIN outcome_type_dim otd ON os."Outcome" = otd."Outcome Type"
+JOIN reproductive_status_dim rsd ON os."Reproductive Status" = rsd."Reproductive Status";
+
+]
+(Background on this error at: https://sqlalche.me/e/14/e3q8); 124)
+[2023-11-22T03:55:59.780+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-22T03:55:59.816+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-22T05:47:48.717+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T05:47:48.739+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T05:47:48.740+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-22T05:47:48.783+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-22T05:47:48.820+0000] {standard_task_runner.py:57} INFO - Started process 175 to run task
+[2023-11-22T05:47:48.851+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpxu1zf4xm']
+[2023-11-22T05:47:48.875+0000] {standard_task_runner.py:85} INFO - Job 15: Subtask Load
+[2023-11-22T05:47:49.049+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host 6e2e77b078ed
+[2023-11-22T05:47:49.179+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-22T05:47:49.182+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T05:47:50.103+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-22T05:47:50.103+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T05:47:50.113+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231122T054748, end_date=20231122T054750
+[2023-11-22T05:47:50.164+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T06:09:43.912+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T06:09:43.926+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T06:09:43.928+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-22T06:09:43.973+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-22T06:09:43.981+0000] {standard_task_runner.py:57} INFO - Started process 115 to run task
+[2023-11-22T06:09:43.996+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpwjgvt06n']
+[2023-11-22T06:09:44.009+0000] {standard_task_runner.py:85} INFO - Job 20: Subtask Load
+[2023-11-22T06:09:44.118+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host ded66acd9c7f
+[2023-11-22T06:09:44.246+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-22T06:09:44.253+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T06:09:45.055+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-22T06:09:45.056+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T06:09:45.066+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231122T060943, end_date=20231122T060945
+[2023-11-22T06:09:45.104+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T06:19:04.647+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T06:19:04.667+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T06:19:04.668+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-22T06:19:04.693+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-22T06:19:04.719+0000] {standard_task_runner.py:57} INFO - Started process 124 to run task
+[2023-11-22T06:19:04.735+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp8wkmw5d3']
+[2023-11-22T06:19:04.746+0000] {standard_task_runner.py:85} INFO - Job 22: Subtask Load
+[2023-11-22T06:19:04.874+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host 836b7d8b8a64
+[2023-11-22T06:19:04.969+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-22T06:19:04.974+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T06:19:05.987+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-22T06:19:05.988+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T06:19:06.000+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231122T061904, end_date=20231122T061906
+[2023-11-22T06:19:06.048+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T07:15:07.674+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T07:15:07.692+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T07:15:07.693+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-22T07:15:07.715+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-22T07:15:07.723+0000] {standard_task_runner.py:57} INFO - Started process 123 to run task
+[2023-11-22T07:15:07.738+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpbu_izs5e']
+[2023-11-22T07:15:07.773+0000] {standard_task_runner.py:85} INFO - Job 20: Subtask Load
+[2023-11-22T07:15:07.969+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host 011245d9ad62
+[2023-11-22T07:15:08.208+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-22T07:15:08.213+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T07:15:09.206+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-22T07:15:09.207+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T07:15:09.222+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231122T071507, end_date=20231122T071509
+[2023-11-22T07:15:09.261+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T07:54:43.151+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T07:54:43.160+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T07:54:43.161+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-22T07:54:43.175+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-22T07:54:43.182+0000] {standard_task_runner.py:57} INFO - Started process 473 to run task
+[2023-11-22T07:54:43.188+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '78', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpp64l8vk7']
+[2023-11-22T07:54:43.192+0000] {standard_task_runner.py:85} INFO - Job 78: Subtask Load
+[2023-11-22T07:54:43.261+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host 6318e996d951
+[2023-11-22T07:54:43.355+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-22T07:54:43.358+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T07:54:44.261+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-22T07:54:44.263+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T07:54:44.277+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231122T075443, end_date=20231122T075444
+[2023-11-22T07:54:44.352+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T01:50:05.477+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-23T01:50:05.485+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-23T01:50:05.485+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-23T01:50:05.499+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-23T01:50:05.507+0000] {standard_task_runner.py:57} INFO - Started process 305 to run task
+[2023-11-23T01:50:05.511+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '78', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp3_9qzvah']
+[2023-11-23T01:50:05.514+0000] {standard_task_runner.py:85} INFO - Job 78: Subtask Load
+[2023-11-23T01:50:05.568+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host d15d3caa5b00
+[2023-11-23T01:50:05.647+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-23T01:50:05.650+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T01:50:06.701+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-23T01:50:06.702+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T01:50:06.713+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231123T015005, end_date=20231123T015006
+[2023-11-23T01:50:06.748+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T01:58:44.240+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-23T01:58:44.259+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-23T01:58:44.259+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-23T01:58:44.281+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-23T01:58:44.296+0000] {standard_task_runner.py:57} INFO - Started process 121 to run task
+[2023-11-23T01:58:44.296+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpnju9ksw3']
+[2023-11-23T01:58:44.299+0000] {standard_task_runner.py:85} INFO - Job 23: Subtask Load
+[2023-11-23T01:58:44.358+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host 3cdc572bc068
+[2023-11-23T01:58:44.439+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-23T01:58:44.441+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T01:58:45.327+0000] {logging_mixin.py:154} INFO - Data is in Staging Table...
+[2023-11-23T01:58:45.327+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T01:58:45.338+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231123T015844, end_date=20231123T015845
+[2023-11-23T01:58:45.376+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T02:59:44.252+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-23T02:59:44.260+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-23T02:59:44.260+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-23T02:59:44.875+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-23T02:59:44.889+0000] {standard_task_runner.py:57} INFO - Started process 166 to run task
+[2023-11-23T02:59:44.920+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpxtcoqz0e']
+[2023-11-23T02:59:44.937+0000] {standard_task_runner.py:85} INFO - Job 17: Subtask Load
+[2023-11-23T02:59:45.062+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host 1268bd8e5db0
+[2023-11-23T02:59:45.210+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-23T02:59:45.219+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T02:59:46.080+0000] {logging_mixin.py:154} INFO - Data is in Staging Area...
+[2023-11-23T02:59:46.081+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T02:59:46.093+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231123T025944, end_date=20231123T025946
+[2023-11-23T02:59:46.147+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T03:42:09.330+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-23T03:42:09.338+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-23T03:42:09.338+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-11-23T03:42:09.349+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Load> on 2023-11-18 00:00:00+00:00
+[2023-11-23T03:42:09.370+0000] {standard_task_runner.py:57} INFO - Started process 549 to run task
+[2023-11-23T03:42:09.381+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Load', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '161', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpfg63zp62']
+[2023-11-23T03:42:09.386+0000] {standard_task_runner.py:85} INFO - Job 161: Subtask Load
+[2023-11-23T03:42:09.446+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Load scheduled__2023-11-18T00:00:00+00:00 [running]> on host e647c96745b0
+[2023-11-23T03:42:09.527+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Load' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-23T03:42:09.530+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T03:42:10.286+0000] {logging_mixin.py:154} INFO - Data is in Staging Area...
+[2023-11-23T03:42:10.287+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T03:42:10.306+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Load, execution_date=20231118T000000, start_date=20231123T034209, end_date=20231123T034210
+[2023-11-23T03:42:10.367+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0

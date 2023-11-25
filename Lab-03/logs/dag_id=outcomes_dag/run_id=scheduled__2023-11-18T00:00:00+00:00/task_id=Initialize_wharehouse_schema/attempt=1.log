@@ -1,0 +1,83 @@
+[2023-11-22T22:41:50.407+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T22:41:50.412+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T22:41:50.413+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T22:41:50.420+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Initialize_wharehouse_schema> on 2023-11-18 00:00:00+00:00
+[2023-11-22T22:41:50.430+0000] {standard_task_runner.py:57} INFO - Started process 274 to run task
+[2023-11-22T22:41:50.435+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Initialize_wharehouse_schema', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '62', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpkwrvabcz']
+[2023-11-22T22:41:50.439+0000] {standard_task_runner.py:85} INFO - Job 62: Subtask Initialize_wharehouse_schema
+[2023-11-22T22:41:50.543+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [running]> on host 8ac13583809b
+[2023-11-22T22:41:50.692+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Initialize_wharehouse_schema' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-22T22:41:51.214+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 16, in execute_sql_script
+    client.query(statement)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 3391, in query
+    return _job_helpers.query_jobs_insert(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/_job_helpers.py", line 114, in query_jobs_insert
+    future = do_query()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/_job_helpers.py", line 91, in do_query
+    query_job._begin(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/query.py", line 1370, in _begin
+    super(QueryJob, self)._begin(client=client, retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 693, in _begin
+    api_response = client._call_api(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 808, in _call_api
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/retry.py", line 366, in retry_wrapped_func
+    return retry_target(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/retry.py", line 204, in retry_target
+    return target()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.Forbidden: 403 POST https://bigquery.googleapis.com/bigquery/v2/projects/dcsc-warehouse/jobs?prettyPrint=false: Access Denied: Project dcsc-warehouse: User does not have bigquery.jobs.create permission in project dcsc-warehouse.
+
+Location: None
+Job ID: c2e61436-b61c-40bb-a524-f5c30d78c07f
+
+[2023-11-22T22:41:51.255+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=outcomes_dag, task_id=Initialize_wharehouse_schema, execution_date=20231118T000000, start_date=20231122T224150, end_date=20231122T224151
+[2023-11-22T22:41:51.265+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 62 for task Initialize_wharehouse_schema (403 POST https://bigquery.googleapis.com/bigquery/v2/projects/dcsc-warehouse/jobs?prettyPrint=false: Access Denied: Project dcsc-warehouse: User does not have bigquery.jobs.create permission in project dcsc-warehouse.
+
+Location: None
+Job ID: c2e61436-b61c-40bb-a524-f5c30d78c07f
+; 274)
+[2023-11-22T22:41:51.311+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-22T23:03:32.101+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T23:03:32.107+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T23:03:32.107+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T23:03:32.116+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Initialize_wharehouse_schema> on 2023-11-18 00:00:00+00:00
+[2023-11-22T23:03:32.125+0000] {standard_task_runner.py:57} INFO - Started process 494 to run task
+[2023-11-22T23:03:32.129+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Initialize_wharehouse_schema', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '126', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp2274foxl']
+[2023-11-22T23:03:32.133+0000] {standard_task_runner.py:85} INFO - Job 126: Subtask Initialize_wharehouse_schema
+[2023-11-22T23:03:32.203+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [running]> on host 4b2f5af281f8
+[2023-11-22T23:03:32.293+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Initialize_wharehouse_schema' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-22T23:03:33.978+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T23:03:33.998+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Initialize_wharehouse_schema, execution_date=20231118T000000, start_date=20231122T230332, end_date=20231122T230333
+[2023-11-22T23:03:34.037+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T23:47:48.256+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T23:47:48.265+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-22T23:47:48.266+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T23:47:48.273+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Initialize_wharehouse_schema> on 2023-11-18 00:00:00+00:00
+[2023-11-22T23:47:48.279+0000] {standard_task_runner.py:57} INFO - Started process 505 to run task
+[2023-11-22T23:47:48.287+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Initialize_wharehouse_schema', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '127', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp1itl0y8t']
+[2023-11-22T23:47:48.292+0000] {standard_task_runner.py:85} INFO - Job 127: Subtask Initialize_wharehouse_schema
+[2023-11-22T23:47:48.355+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [running]> on host 371cae71aa63
+[2023-11-22T23:47:48.411+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Initialize_wharehouse_schema' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-22T23:47:50.539+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T23:47:50.551+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Initialize_wharehouse_schema, execution_date=20231118T000000, start_date=20231122T234748, end_date=20231122T234750
+[2023-11-22T23:47:50.616+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T00:43:12.637+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-23T00:43:12.649+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [queued]>
+[2023-11-23T00:43:12.649+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T00:43:12.666+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Initialize_wharehouse_schema> on 2023-11-18 00:00:00+00:00
+[2023-11-23T00:43:12.681+0000] {standard_task_runner.py:57} INFO - Started process 513 to run task
+[2023-11-23T00:43:12.703+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Initialize_wharehouse_schema', 'scheduled__2023-11-18T00:00:00+00:00', '--job-id', '133', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmphb1rseqv']
+[2023-11-23T00:43:12.715+0000] {standard_task_runner.py:85} INFO - Job 133: Subtask Initialize_wharehouse_schema
+[2023-11-23T00:43:12.779+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-18T00:00:00+00:00 [running]> on host 75913536581a
+[2023-11-23T00:43:12.834+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Initialize_wharehouse_schema' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-18T00:00:00+00:00'
+[2023-11-23T00:43:14.444+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T00:43:14.458+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Initialize_wharehouse_schema, execution_date=20231118T000000, start_date=20231123T004312, end_date=20231123T004314
+[2023-11-23T00:43:14.510+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0

@@ -1,0 +1,52 @@
+[2023-11-23T00:58:42.918+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T00:58:42.923+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T00:58:42.923+0000] {taskinstance.py:1361} INFO - Starting attempt 4 of 4
+[2023-11-23T00:58:42.931+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Initialize_wharehouse_schema> on 2023-11-21 00:00:00+00:00
+[2023-11-23T00:58:42.937+0000] {standard_task_runner.py:57} INFO - Started process 850 to run task
+[2023-11-23T00:58:42.940+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Initialize_wharehouse_schema', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '168', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpt_a1gt23']
+[2023-11-23T00:58:42.943+0000] {standard_task_runner.py:85} INFO - Job 168: Subtask Initialize_wharehouse_schema
+[2023-11-23T00:58:42.977+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Initialize_wharehouse_schema scheduled__2023-11-21T00:00:00+00:00 [running]> on host 75913536581a
+[2023-11-23T00:58:43.016+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Initialize_wharehouse_schema' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-23T00:58:43.666+0000] {load.py:22} ERROR - Error executing SQL script: 400 POST https://bigquery.googleapis.com/bigquery/v2/projects/dcsc-warehouse/jobs?prettyPrint=false: Table "outcomes_staging" must be qualified with a dataset (e.g. dataset.table).
+
+Location: None
+Job ID: f8f99234-756c-4f20-a8fa-28af50e7fad6
+
+[2023-11-23T00:58:43.666+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/load.py", line 15, in execute_sql_script
+    query_job = client.query(sql_statement, job_config=job_config)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 3391, in query
+    return _job_helpers.query_jobs_insert(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/_job_helpers.py", line 114, in query_jobs_insert
+    future = do_query()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/_job_helpers.py", line 91, in do_query
+    query_job._begin(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/query.py", line 1370, in _begin
+    super(QueryJob, self)._begin(client=client, retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 693, in _begin
+    api_response = client._call_api(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 808, in _call_api
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/retry.py", line 366, in retry_wrapped_func
+    return retry_target(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/retry.py", line 204, in retry_target
+    return target()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.BadRequest: 400 POST https://bigquery.googleapis.com/bigquery/v2/projects/dcsc-warehouse/jobs?prettyPrint=false: Table "outcomes_staging" must be qualified with a dataset (e.g. dataset.table).
+
+Location: None
+Job ID: f8f99234-756c-4f20-a8fa-28af50e7fad6
+
+[2023-11-23T00:58:43.677+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=outcomes_dag, task_id=Initialize_wharehouse_schema, execution_date=20231121T000000, start_date=20231123T005842, end_date=20231123T005843
+[2023-11-23T00:58:43.683+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 168 for task Initialize_wharehouse_schema (400 POST https://bigquery.googleapis.com/bigquery/v2/projects/dcsc-warehouse/jobs?prettyPrint=false: Table "outcomes_staging" must be qualified with a dataset (e.g. dataset.table).
+
+Location: None
+Job ID: f8f99234-756c-4f20-a8fa-28af50e7fad6
+; 850)
+[2023-11-23T00:58:43.693+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1

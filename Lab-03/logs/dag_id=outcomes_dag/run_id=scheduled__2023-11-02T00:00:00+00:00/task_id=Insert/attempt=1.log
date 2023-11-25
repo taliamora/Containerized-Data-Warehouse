@@ -1,0 +1,176 @@
+[2023-11-22T07:54:21.988+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Insert scheduled__2023-11-02T00:00:00+00:00 [queued]>
+[2023-11-22T07:54:22.100+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Insert scheduled__2023-11-02T00:00:00+00:00 [queued]>
+[2023-11-22T07:54:22.114+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T07:54:22.234+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Insert> on 2023-11-02 00:00:00+00:00
+[2023-11-22T07:54:22.754+0000] {standard_task_runner.py:57} INFO - Started process 419 to run task
+[2023-11-22T07:54:22.875+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Insert', 'scheduled__2023-11-02T00:00:00+00:00', '--job-id', '54', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmph_zghmud']
+[2023-11-22T07:54:23.030+0000] {standard_task_runner.py:85} INFO - Job 54: Subtask Insert
+[2023-11-22T07:54:23.565+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Insert scheduled__2023-11-02T00:00:00+00:00 [running]> on host 6318e996d951
+[2023-11-22T07:54:24.248+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Insert' AIRFLOW_CTX_EXECUTION_DATE='2023-11-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-02T00:00:00+00:00'
+[2023-11-22T07:54:24.276+0000] {logging_mixin.py:154} INFO - Error executing SQL script: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "animal_dim_pkey"
+DETAIL:  Key ("Animal ID")=(A889466) already exists.
+
+[SQL: --- INSERT DATA INTO DIMENSION TABLES
+
+--- Animal Dimension
+INSERT INTO animal_dim ("Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB")
+SELECT DISTINCT "Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB"
+FROM outcomes_staging
+WHERE "Animal ID" IS NOT NULL;
+
+--- Outcomes Dimension
+INSERT INTO outcome_type_dim ("Outcome Type")
+SELECT DISTINCT "Outcome"
+FROM outcomes_staging
+WHERE "Outcome" IS NOT NULL;
+
+--- Reproductive Status Dimension
+INSERT INTO reproductive_status_dim ("Reproductive Status")
+SELECT DISTINCT "Reproductive Status"
+FROM outcomes_staging
+WHERE "Reproductive Status" IS NOT NULL;
+
+--- Date Dimension
+INSERT INTO date_dim ("Date ID", "Day", "Month", "Year")
+SELECT DISTINCT "Date ID", "Day", "Month", "Year"
+FROM outcomes_staging
+WHERE "Date ID" IS NOT NULL;
+
+
+
+
+--- INSERT DATA INTO FACT TABLE
+INSERT INTO outcomes_fct ("Date", "Animal", "Outcome", "Repo Status")
+SELECT 
+    dd."Date ID",
+    ad."Animal ID",
+    otd."Outcome ID",
+    rsd."Status ID"
+FROM outcomes_staging os
+JOIN date_dim dd ON os."Date ID" = dd."Date ID"
+JOIN animal_dim ad ON os."Animal ID" = ad."Animal ID"
+JOIN outcome_type_dim otd ON os."Outcome" = otd."Outcome Type"
+JOIN reproductive_status_dim rsd ON os."Reproductive Status" = rsd."Reproductive Status";
+
+]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2023-11-22T07:54:24.278+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T07:54:24.305+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Insert, execution_date=20231102T000000, start_date=20231122T075422, end_date=20231122T075424
+[2023-11-22T07:54:24.382+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T07:54:24.496+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-23T01:49:49.715+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Insert scheduled__2023-11-02T00:00:00+00:00 [queued]>
+[2023-11-23T01:49:49.746+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Insert scheduled__2023-11-02T00:00:00+00:00 [queued]>
+[2023-11-23T01:49:49.747+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T01:49:49.766+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Insert> on 2023-11-02 00:00:00+00:00
+[2023-11-23T01:49:49.806+0000] {standard_task_runner.py:57} INFO - Started process 244 to run task
+[2023-11-23T01:49:49.839+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Insert', 'scheduled__2023-11-02T00:00:00+00:00', '--job-id', '56', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpum1aighs']
+[2023-11-23T01:49:49.859+0000] {standard_task_runner.py:85} INFO - Job 56: Subtask Insert
+[2023-11-23T01:49:50.008+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Insert scheduled__2023-11-02T00:00:00+00:00 [running]> on host d15d3caa5b00
+[2023-11-23T01:49:50.273+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Insert' AIRFLOW_CTX_EXECUTION_DATE='2023-11-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-02T00:00:00+00:00'
+[2023-11-23T01:49:50.313+0000] {logging_mixin.py:154} INFO - Error executing SQL script: (psycopg2.errors.SyntaxError) syntax error at or near "`"
+LINE 4: INSERT INTO animal_dim (`Animal ID`, `Name`, `Animal Type`, ...
+                                ^
+
+[SQL: -- INSERT DATA INTO DIMENSION TABLES
+
+-- Animal Dimension
+INSERT INTO animal_dim (`Animal ID`, `Name`, `Animal Type`, `Breed`, `Color`, `Sex`, `DOB`)
+SELECT DISTINCT `Animal ID`, `Name`, `Animal Type`, `Breed`, `Color`, `Sex`, `DOB`
+FROM outcomes_staging
+WHERE `Animal ID` IS NOT NULL;
+
+-- Outcomes Dimension
+INSERT INTO outcome_type_dim (`Outcome Type`)
+SELECT DISTINCT `Outcome`
+FROM outcomes_staging
+WHERE `Outcome` IS NOT NULL;
+
+-- Reproductive Status Dimension
+INSERT INTO reproductive_status_dim (`Reproductive Status`)
+SELECT DISTINCT `Reproductive Status`
+FROM outcomes_staging
+WHERE `Reproductive Status` IS NOT NULL;
+
+-- Date Dimension
+INSERT INTO date_dim (`Date ID`, `Day`, `Month`, `Year`)
+SELECT DISTINCT `Date ID`, `Day`, `Month`, `Year`
+FROM outcomes_staging
+WHERE `Date ID` IS NOT NULL;
+
+-- INSERT DATA INTO FACT TABLE
+INSERT INTO outcomes_fct (`Date`, `Animal`, `Outcome`, `Repo Status`)
+SELECT 
+    dd.`Date ID`,
+    ad.`Animal ID`,
+    otd.`Outcome ID`,
+    rsd.`Status ID`
+FROM outcomes_staging os
+JOIN date_dim dd ON os.`Date ID` = dd.`Date ID`
+JOIN animal_dim ad ON os.`Animal ID` = ad.`Animal ID`
+JOIN outcome_type_dim otd ON os.`Outcome` = otd.`Outcome Type`
+JOIN reproductive_status_dim rsd ON os.`Reproductive Status` = rsd.`Reproductive Status`;
+]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2023-11-23T01:49:50.319+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T01:49:50.350+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Insert, execution_date=20231102T000000, start_date=20231123T014949, end_date=20231123T014950
+[2023-11-23T01:49:50.427+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T01:49:50.482+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-23T03:40:58.064+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Insert scheduled__2023-11-02T00:00:00+00:00 [queued]>
+[2023-11-23T03:40:58.137+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Insert scheduled__2023-11-02T00:00:00+00:00 [queued]>
+[2023-11-23T03:40:58.157+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T03:40:58.225+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Insert> on 2023-11-02 00:00:00+00:00
+[2023-11-23T03:40:58.261+0000] {standard_task_runner.py:57} INFO - Started process 238 to run task
+[2023-11-23T03:40:58.298+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Insert', 'scheduled__2023-11-02T00:00:00+00:00', '--job-id', '55', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpoyt11nr_']
+[2023-11-23T03:40:58.393+0000] {standard_task_runner.py:85} INFO - Job 55: Subtask Insert
+[2023-11-23T03:40:58.904+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Insert scheduled__2023-11-02T00:00:00+00:00 [running]> on host e647c96745b0
+[2023-11-23T03:40:59.256+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Insert' AIRFLOW_CTX_EXECUTION_DATE='2023-11-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-02T00:00:00+00:00'
+[2023-11-23T03:40:59.346+0000] {logging_mixin.py:154} INFO - Error executing SQL script: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "animal_dim_pkey"
+DETAIL:  Key ("Animal ID")=(A892660) already exists.
+
+[SQL: --- INSERT DATA INTO DIMENSION TABLES
+
+--- Animal Dimension
+INSERT INTO animal_dim ("Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB")
+SELECT DISTINCT "Animal ID", "Name", "Animal Type", "Breed", "Color", "Sex", "DOB"
+FROM outcomes_staging
+WHERE "Animal ID" IS NOT NULL;
+
+--- Outcomes Dimension
+INSERT INTO outcome_type_dim ("Outcome Type")
+SELECT DISTINCT "Outcome"
+FROM outcomes_staging
+WHERE "Outcome" IS NOT NULL;
+
+--- Reproductive Status Dimension
+INSERT INTO reproductive_status_dim ("Reproductive Status")
+SELECT DISTINCT "Reproductive Status"
+FROM outcomes_staging
+WHERE "Reproductive Status" IS NOT NULL;
+
+--- Date Dimension
+INSERT INTO date_dim ("Date ID", "Day", "Month", "Year")
+SELECT DISTINCT "Date ID", "Day", "Month", "Year"
+FROM outcomes_staging
+WHERE "Date ID" IS NOT NULL;
+
+
+
+
+--- INSERT DATA INTO FACT TABLE
+INSERT INTO outcomes_fct ("Date", "Animal", "Outcome", "Repo Status")
+SELECT 
+    dd."Date ID",
+    ad."Animal ID",
+    otd."Outcome ID",
+    rsd."Status ID"
+FROM outcomes_staging os
+JOIN date_dim dd ON os."Date ID" = dd."Date ID"
+JOIN animal_dim ad ON os."Animal ID" = ad."Animal ID"
+JOIN outcome_type_dim otd ON os."Outcome" = otd."Outcome Type"
+JOIN reproductive_status_dim rsd ON os."Reproductive Status" = rsd."Reproductive Status";
+
+]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2023-11-23T03:40:59.348+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T03:40:59.439+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Insert, execution_date=20231102T000000, start_date=20231123T034058, end_date=20231123T034059
+[2023-11-23T03:40:59.597+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0

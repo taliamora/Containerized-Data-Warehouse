@@ -1,0 +1,331 @@
+[2023-11-22T00:00:05.149+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T00:00:05.153+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T00:00:05.153+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T00:00:05.158+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T00:00:05.165+0000] {standard_task_runner.py:57} INFO - Started process 9894 to run task
+[2023-11-22T00:00:05.168+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '33', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp7wcw_cmh']
+[2023-11-22T00:00:05.171+0000] {standard_task_runner.py:85} INFO - Job 33: Subtask Transform
+[2023-11-22T00:00:05.207+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 33d8c5494200
+[2023-11-22T00:00:05.250+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T00:00:05.353+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T00:00:05.361+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T000005, end_date=20231122T000005
+[2023-11-22T00:00:05.392+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T00:00:05.404+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-11-22T02:54:04.464+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T02:54:04.470+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T02:54:04.470+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T02:54:04.477+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T02:54:04.485+0000] {standard_task_runner.py:57} INFO - Started process 105 to run task
+[2023-11-22T02:54:04.489+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpow9wisex']
+[2023-11-22T02:54:04.492+0000] {standard_task_runner.py:85} INFO - Job 17: Subtask Transform
+[2023-11-22T02:54:04.538+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 24b88ba10398
+[2023-11-22T02:54:04.595+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T02:54:04.596+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T02:54:04.981+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL/Transform.py", line 10, in transform_data
+    new_data = pre_process(df)
+  File "/opt/airflow/dags/ETL/Transform.py", line 23, in pre_process
+    df['Day'] = df["datetime"].dt.day
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 5989, in __getattr__
+    return object.__getattribute__(self, name)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/indexes/accessors.py", line 580, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values
+[2023-11-22T02:54:04.995+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T025404, end_date=20231122T025404
+[2023-11-22T02:54:05.004+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 17 for task Transform (Can only use .dt accessor with datetimelike values; 105)
+[2023-11-22T02:54:05.026+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-22T03:22:51.244+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T03:22:51.252+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T03:22:51.252+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T03:22:51.262+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T03:22:51.276+0000] {standard_task_runner.py:57} INFO - Started process 90 to run task
+[2023-11-22T03:22:51.299+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpkv2pmbg3']
+[2023-11-22T03:22:51.312+0000] {standard_task_runner.py:85} INFO - Job 11: Subtask Transform
+[2023-11-22T03:22:51.397+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host cf56a4e96859
+[2023-11-22T03:22:51.559+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T03:22:51.567+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T03:22:51.906+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'name', 'datetime', 'monthyear', 'date_of_birth',
+       'outcome_type', 'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color'],
+      dtype='object')
+[2023-11-22T03:22:52.065+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T03:22:52.066+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T03:22:52.077+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T032251, end_date=20231122T032252
+[2023-11-22T03:22:52.106+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T03:55:53.938+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T03:55:53.970+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T03:55:53.979+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T03:55:53.994+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T03:55:54.044+0000] {standard_task_runner.py:57} INFO - Started process 97 to run task
+[2023-11-22T03:55:54.063+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpaj1jko9r']
+[2023-11-22T03:55:54.098+0000] {standard_task_runner.py:85} INFO - Job 11: Subtask Transform
+[2023-11-22T03:55:54.278+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host cf936e748923
+[2023-11-22T03:55:54.499+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T03:55:54.507+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T03:55:54.983+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'datetime', 'monthyear', 'date_of_birth', 'outcome_type',
+       'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color', 'name'],
+      dtype='object')
+[2023-11-22T03:55:55.210+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T03:55:55.210+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T03:55:55.227+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T035553, end_date=20231122T035555
+[2023-11-22T03:55:55.257+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T05:47:45.145+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T05:47:45.150+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T05:47:45.150+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T05:47:45.157+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T05:47:45.163+0000] {standard_task_runner.py:57} INFO - Started process 153 to run task
+[2023-11-22T05:47:45.166+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp4dmjtetn']
+[2023-11-22T05:47:45.171+0000] {standard_task_runner.py:85} INFO - Job 13: Subtask Transform
+[2023-11-22T05:47:45.223+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 6e2e77b078ed
+[2023-11-22T05:47:45.322+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T05:47:45.323+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T05:47:45.700+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'datetime', 'monthyear', 'date_of_birth', 'outcome_type',
+       'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color', 'name'],
+      dtype='object')
+[2023-11-22T05:47:45.904+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T05:47:45.906+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T05:47:45.924+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T054745, end_date=20231122T054745
+[2023-11-22T05:47:45.991+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T06:09:40.660+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T06:09:40.671+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T06:09:40.672+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T06:09:40.681+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T06:09:40.686+0000] {standard_task_runner.py:57} INFO - Started process 96 to run task
+[2023-11-22T06:09:40.691+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpdqj2usqg']
+[2023-11-22T06:09:40.695+0000] {standard_task_runner.py:85} INFO - Job 15: Subtask Transform
+[2023-11-22T06:09:40.734+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host ded66acd9c7f
+[2023-11-22T06:09:40.799+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T06:09:40.801+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T06:09:41.210+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'datetime', 'monthyear', 'date_of_birth', 'outcome_type',
+       'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color', 'name'],
+      dtype='object')
+[2023-11-22T06:09:41.416+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T06:09:41.416+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T06:09:41.443+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T060940, end_date=20231122T060941
+[2023-11-22T06:09:41.515+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T06:19:00.784+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T06:19:00.791+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T06:19:00.794+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T06:19:00.826+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T06:19:00.846+0000] {standard_task_runner.py:57} INFO - Started process 103 to run task
+[2023-11-22T06:19:00.870+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpbmhximvq']
+[2023-11-22T06:19:00.880+0000] {standard_task_runner.py:85} INFO - Job 17: Subtask Transform
+[2023-11-22T06:19:00.989+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 836b7d8b8a64
+[2023-11-22T06:19:01.092+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T06:19:01.094+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T06:19:01.456+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'datetime', 'monthyear', 'date_of_birth', 'outcome_type',
+       'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color', 'name'],
+      dtype='object')
+[2023-11-22T06:19:01.761+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T06:19:01.762+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T06:19:01.772+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T061900, end_date=20231122T061901
+[2023-11-22T06:19:01.816+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T07:15:03.764+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T07:15:03.814+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T07:15:03.817+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T07:15:03.862+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T07:15:03.883+0000] {standard_task_runner.py:57} INFO - Started process 100 to run task
+[2023-11-22T07:15:03.908+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpaj3ib_5j']
+[2023-11-22T07:15:03.940+0000] {standard_task_runner.py:85} INFO - Job 12: Subtask Transform
+[2023-11-22T07:15:04.155+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 011245d9ad62
+[2023-11-22T07:15:04.289+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T07:15:04.298+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T07:15:05.256+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'datetime', 'monthyear', 'date_of_birth', 'outcome_type',
+       'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color', 'name'],
+      dtype='object')
+[2023-11-22T07:15:05.659+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T07:15:05.660+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T07:15:05.676+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T071503, end_date=20231122T071505
+[2023-11-22T07:15:05.731+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T07:54:40.431+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T07:54:40.439+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T07:54:40.439+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T07:54:40.451+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T07:54:40.469+0000] {standard_task_runner.py:57} INFO - Started process 463 to run task
+[2023-11-22T07:54:40.481+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '74', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmph50l9pi2']
+[2023-11-22T07:54:40.486+0000] {standard_task_runner.py:85} INFO - Job 74: Subtask Transform
+[2023-11-22T07:54:40.548+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 6318e996d951
+[2023-11-22T07:54:40.616+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T07:54:40.618+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T07:54:41.078+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'name', 'datetime', 'monthyear', 'date_of_birth',
+       'outcome_type', 'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color'],
+      dtype='object')
+[2023-11-22T07:54:41.326+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T07:54:41.327+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T07:54:41.343+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T075440, end_date=20231122T075441
+[2023-11-22T07:54:41.390+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T22:41:47.738+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T22:41:47.746+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T22:41:47.747+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T22:41:47.759+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T22:41:47.767+0000] {standard_task_runner.py:57} INFO - Started process 260 to run task
+[2023-11-22T22:41:47.774+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '59', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpozl818c8']
+[2023-11-22T22:41:47.778+0000] {standard_task_runner.py:85} INFO - Job 59: Subtask Transform
+[2023-11-22T22:41:47.905+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 8ac13583809b
+[2023-11-22T22:41:48.032+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T22:41:48.034+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T22:41:48.471+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'name', 'datetime', 'monthyear', 'date_of_birth',
+       'outcome_type', 'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color'],
+      dtype='object')
+[2023-11-22T22:41:48.645+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T22:41:48.647+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T22:41:48.671+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T224147, end_date=20231122T224148
+[2023-11-22T22:41:48.724+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T23:03:26.461+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T23:03:26.466+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T23:03:26.466+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T23:03:26.472+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T23:03:26.479+0000] {standard_task_runner.py:57} INFO - Started process 468 to run task
+[2023-11-22T23:03:26.482+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '120', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpso71k3gs']
+[2023-11-22T23:03:26.486+0000] {standard_task_runner.py:85} INFO - Job 120: Subtask Transform
+[2023-11-22T23:03:26.538+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 4b2f5af281f8
+[2023-11-22T23:03:26.612+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T23:03:26.616+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T23:03:26.928+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'name', 'datetime', 'monthyear', 'date_of_birth',
+       'outcome_type', 'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color'],
+      dtype='object')
+[2023-11-22T23:03:27.161+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T23:03:27.162+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T23:03:27.172+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T230326, end_date=20231122T230327
+[2023-11-22T23:03:27.221+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T23:24:01.339+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T23:24:01.344+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T23:24:01.344+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T23:24:01.349+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T23:24:01.358+0000] {standard_task_runner.py:57} INFO - Started process 444 to run task
+[2023-11-22T23:24:01.361+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '112', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpf7qzfgjf']
+[2023-11-22T23:24:01.363+0000] {standard_task_runner.py:85} INFO - Job 112: Subtask Transform
+[2023-11-22T23:24:01.402+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host b410bfb4af5e
+[2023-11-22T23:24:01.447+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T23:24:01.449+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T23:24:01.692+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'name', 'datetime', 'monthyear', 'date_of_birth',
+       'outcome_type', 'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color'],
+      dtype='object')
+[2023-11-22T23:24:01.913+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T23:24:01.914+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T23:24:01.933+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T232401, end_date=20231122T232401
+[2023-11-22T23:24:01.955+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T23:46:39.680+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T23:46:39.687+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-22T23:46:39.687+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T23:46:39.694+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-22T23:46:39.700+0000] {standard_task_runner.py:57} INFO - Started process 429 to run task
+[2023-11-22T23:46:39.707+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '107', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpfuhicnqn']
+[2023-11-22T23:46:39.710+0000] {standard_task_runner.py:85} INFO - Job 107: Subtask Transform
+[2023-11-22T23:46:39.779+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 371cae71aa63
+[2023-11-22T23:46:39.867+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-22T23:46:39.870+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-22T23:46:40.145+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'name', 'datetime', 'monthyear', 'date_of_birth',
+       'outcome_type', 'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color'],
+      dtype='object')
+[2023-11-22T23:46:40.408+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-22T23:46:40.409+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-22T23:46:40.424+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231122T234639, end_date=20231122T234640
+[2023-11-22T23:46:40.490+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T00:43:10.112+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T00:43:10.122+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T00:43:10.123+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T00:43:10.131+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-23T00:43:10.136+0000] {standard_task_runner.py:57} INFO - Started process 493 to run task
+[2023-11-23T00:43:10.142+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '125', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp1yb37a6u']
+[2023-11-23T00:43:10.152+0000] {standard_task_runner.py:85} INFO - Job 125: Subtask Transform
+[2023-11-23T00:43:10.221+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 75913536581a
+[2023-11-23T00:43:10.279+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-23T00:43:10.280+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T00:43:10.680+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'name', 'datetime', 'monthyear', 'date_of_birth',
+       'outcome_type', 'animal_type', 'sex_upon_outcome', 'age_upon_outcome',
+       'breed', 'color', 'outcome_subtype'],
+      dtype='object')
+[2023-11-23T00:43:10.827+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-23T00:43:10.827+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T00:43:10.836+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231123T004310, end_date=20231123T004310
+[2023-11-23T00:43:10.887+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T01:50:02.612+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T01:50:02.620+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T01:50:02.621+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T01:50:02.644+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-23T01:50:02.656+0000] {standard_task_runner.py:57} INFO - Started process 287 to run task
+[2023-11-23T01:50:02.664+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '74', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpmvb_sgjs']
+[2023-11-23T01:50:02.671+0000] {standard_task_runner.py:85} INFO - Job 74: Subtask Transform
+[2023-11-23T01:50:02.809+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host d15d3caa5b00
+[2023-11-23T01:50:02.981+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-23T01:50:02.985+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T01:50:03.513+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'name', 'datetime', 'monthyear', 'date_of_birth',
+       'outcome_type', 'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color'],
+      dtype='object')
+[2023-11-23T01:50:03.652+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-23T01:50:03.654+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T01:50:03.677+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231123T015002, end_date=20231123T015003
+[2023-11-23T01:50:03.732+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T01:58:39.457+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T01:58:39.475+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T01:58:39.476+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T01:58:39.507+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-23T01:58:39.518+0000] {standard_task_runner.py:57} INFO - Started process 86 to run task
+[2023-11-23T01:58:39.532+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpw5ltv4rb']
+[2023-11-23T01:58:39.539+0000] {standard_task_runner.py:85} INFO - Job 12: Subtask Transform
+[2023-11-23T01:58:39.636+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 3cdc572bc068
+[2023-11-23T01:58:39.746+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-23T01:58:39.747+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T01:58:40.169+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'datetime', 'monthyear', 'date_of_birth', 'outcome_type',
+       'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color', 'name'],
+      dtype='object')
+[2023-11-23T01:58:40.418+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-23T01:58:40.418+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T01:58:40.437+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231123T015839, end_date=20231123T015840
+[2023-11-23T01:58:40.552+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T02:59:41.872+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T02:59:41.886+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T02:59:41.887+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T02:59:42.316+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-23T02:59:42.329+0000] {standard_task_runner.py:57} INFO - Started process 145 to run task
+[2023-11-23T02:59:42.340+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmp4m2e1xj8']
+[2023-11-23T02:59:42.352+0000] {standard_task_runner.py:85} INFO - Job 14: Subtask Transform
+[2023-11-23T02:59:42.491+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host 1268bd8e5db0
+[2023-11-23T02:59:42.611+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-23T02:59:42.616+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T02:59:43.065+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'name', 'datetime', 'monthyear', 'date_of_birth',
+       'outcome_type', 'animal_type', 'sex_upon_outcome', 'age_upon_outcome',
+       'breed', 'color', 'outcome_subtype'],
+      dtype='object')
+[2023-11-23T02:59:43.292+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-23T02:59:43.293+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T02:59:43.306+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231123T025941, end_date=20231123T025943
+[2023-11-23T02:59:43.351+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T03:42:06.902+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T03:42:06.927+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [queued]>
+[2023-11-23T03:42:06.930+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T03:42:06.957+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Transform> on 2023-11-21 00:00:00+00:00
+[2023-11-23T03:42:07.007+0000] {standard_task_runner.py:57} INFO - Started process 538 to run task
+[2023-11-23T03:42:07.032+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'outcomes_dag', 'Transform', 'scheduled__2023-11-21T00:00:00+00:00', '--job-id', '156', '--raw', '--subdir', 'DAGS_FOLDER/outcomes_dag.py', '--cfg-path', '/tmp/tmpmjl2tuj8']
+[2023-11-23T03:42:07.042+0000] {standard_task_runner.py:85} INFO - Job 156: Subtask Transform
+[2023-11-23T03:42:07.189+0000] {task_command.py:416} INFO - Running <TaskInstance: outcomes_dag.Transform scheduled__2023-11-21T00:00:00+00:00 [running]> on host e647c96745b0
+[2023-11-23T03:42:07.321+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='outcomes_dag' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-21T00:00:00+00:00'
+[2023-11-23T03:42:07.323+0000] {logging_mixin.py:154} INFO - Getting data from Cloud Storage
+[2023-11-23T03:42:07.663+0000] {logging_mixin.py:154} INFO - Index(['animal_id', 'datetime', 'monthyear', 'date_of_birth', 'outcome_type',
+       'outcome_subtype', 'animal_type', 'sex_upon_outcome',
+       'age_upon_outcome', 'breed', 'color', 'name'],
+      dtype='object')
+[2023-11-23T03:42:07.908+0000] {logging_mixin.py:154} INFO - Data Deposited into Cloud Storage
+[2023-11-23T03:42:07.908+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T03:42:07.920+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=outcomes_dag, task_id=Transform, execution_date=20231121T000000, start_date=20231123T034206, end_date=20231123T034207
+[2023-11-23T03:42:07.979+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
