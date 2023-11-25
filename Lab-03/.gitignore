@@ -1,1 +1,16 @@
+# Ignore GCP JSON key for connecting to Cloud Storage & Warehouse
 dcsc-warehouse-d29420f93ad3.json
+
+# Ignore runtime data
+logs/
+airflow.db
+
+# Ignore other unnecessary files
+dags/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore EMPTY plugins and config folders
+plugins/
+config/
